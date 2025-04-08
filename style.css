@@ -1,0 +1,147 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.6s ease, color 0.6s ease;
+    background-color: #121212;
+    color: white;
+  }
+
+  body.light-mode {
+    background-color: #fffbe6;
+    color: #121212;
+  }
+
+  h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    color: #121212;
+    transition: opacity 0.4s ease;
+    opacity: 0;
+  }
+
+  body.light-mode h1 {
+    opacity: 1;
+  }
+
+  #bulb {
+    width: 130px;
+    transition: all 0.3s ease-in-out;
+    rotate: 180deg;
+  }
+
+  .glow {
+    filter: drop-shadow(0 0 20px yellow);
+    transform: scale(1.05);
+  }
+
+  #toggleBtn {
+    font-size: 17px;
+    position: relative;
+    display: inline-block;
+    width: 5em;
+    height: 2.5em;
+    user-select: none;
+    margin-top: 30px;
+  }
+
+  #toggleBtn .cb {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .toggle {
+    position: absolute;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    background-color: #373737;
+    border-radius: 0.1em;
+    transition: 0.4s;
+    text-transform: uppercase;
+    font-weight: 700;
+    overflow: hidden;
+    box-shadow: -0.3em 0 0 0 #373737, -0.3em 0.3em 0 0 #373737,
+      0.3em 0 0 0 #373737, 0.3em 0.3em 0 0 #373737, 0 0.3em 0 0 #373737;
+  }
+
+  .toggle > .left,
+  .toggle > .right {
+    position: absolute;
+    display: flex;
+    width: 50%;
+    height: 88%;
+    background-color: #f3f3f3;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    transform-origin: right;
+    transform: rotateX(10deg);
+    transform-style: preserve-3d;
+    transition: all 150ms;
+  }
+
+  .toggle > .left {
+    color: #373737;
+    left: 0;
+  }
+
+  .toggle > .right {
+    color: rgb(206, 206, 206);
+    right: 1px;
+    transform-origin: left;
+    transform: rotateX(10deg) rotateY(-45deg);
+  }
+
+  .left::before,
+  .right::before,
+  .left::after,
+  .right::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .left::before {
+    background-color: rgb(206, 206, 206);
+    transform: rotateY(90deg);
+    transform-origin: center left;
+  }
+
+  .left::after {
+    background-color: rgb(112, 112, 112);
+    transform: rotateX(90deg);
+    transform-origin: center bottom;
+  }
+
+  .right::before {
+    background-color: rgb(206, 206, 206);
+    transform: rotateY(-90deg);
+    transform-origin: center right;
+  }
+
+  .right::after {
+    background-color: rgb(112, 112, 112);
+    transform: rotateX(90deg);
+    transform-origin: center bottom;
+  }
+
+  #toggleBtn input:checked + .toggle > .left {
+    transform: rotateX(10deg) rotateY(45deg);
+    color: rgb(206, 206, 206);
+  }
+
+  #toggleBtn input:checked + .toggle > .right {
+    transform: rotateX(10deg) rotateY(0deg);
+    color: #487bdb;
+  }
